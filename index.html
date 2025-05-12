@@ -51,7 +51,7 @@
         .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--switch-bg); transition: .4s; border-radius: 26px; }
         .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: var(--switch-slider-bg); transition: .4s; border-radius: 50%; box-shadow: 0 0 2px rgba(0,0,0,0.3); }
         input:checked + .slider { background-color: var(--switch-checked-bg); }
-        input:checked + .slider:before { transform: translateX(24px); }
+        input:checked + .slider:before { transform: translateX(15px); }
 
         .container {
             background-color: var(--card-bg-color); padding: 30px 40px; border-radius: 12px;
@@ -158,7 +158,7 @@
             </div>
             <div class="form-group">
                 <label for="numQuestions">Number of Questions:</label>
-                <input type="number" id="numQuestions" value="5" min="1" max="20">
+                <input type="number" id="numQuestions" value="5" min="1" max="50">
             </div>
             <button onclick="generateQuizFromAPI()">Generate Quiz with AI »</button>
             <div id="apiError"></div>
@@ -292,8 +292,8 @@
                 apiErrorEl.textContent = "Please enter some topics.";
                 return;
             }
-            if (count < 1 || count > 20) { // Max 20 for safety with LLM tokens
-                apiErrorEl.textContent = "Number of questions must be between 1 and 20.";
+            if (count < 1 || count > 50) { // Max 50 for safety with LLM tokens
+                apiErrorEl.textContent = "Number of questions must be between 1 and 50.";
                 return;
             }
 
